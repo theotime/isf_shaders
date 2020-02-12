@@ -2,6 +2,7 @@
 // CC-BY-NC-SA
 
 // www.moduloprime.com
+// Motion Graphics #001
 
 // Checkout this on shadertoy: https://www.shadertoy.com/view/tlcXD8
 
@@ -33,7 +34,7 @@
     },
     {
       "NAME": "ring_base_width",
-      "LABEL": "Ring Width",
+      "LABEL": "Ring width",
       "TYPE": "float",
       "DEFAULT": 0.05,
       "MIN": 0.
