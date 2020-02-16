@@ -7,8 +7,7 @@
 // Checkout this on shadertoy: https://www.shadertoy.com/view/tlcXD8
 
 // With the help of https://thebookofshaders.com/examples/?chapter=motionToolKit
-// With the help of Flopine.
-// With the help of FabriceNeyret2.
+// With the help of Flopine, FabriceNeyret2, Pixel Spirit Deck.
 
 
 /*{
@@ -29,14 +28,14 @@
       "NAME": "ring_base_sz",
       "LABEL": "Ring size",
       "TYPE": "float",
-      "DEFAULT": 0.025,
+      "DEFAULT": 0.0125,
       "MIN": 0.
     },
     {
       "NAME": "ring_base_width",
       "LABEL": "Ring width",
       "TYPE": "float",
-      "DEFAULT": 0.05,
+      "DEFAULT": 0.1,
       "MIN": -0.01,
       "MAX": 1.1
     },
@@ -63,12 +62,32 @@
 
 
 const float pi = 3.141592654;
+const float AA = 3.;
 
 #define g_time (speed*(bpm/60.)*(resync+TIME))
 
 mat2 r2d(float a) {
     float c = cos(a), s = sin(a);
     return mat2(c, s, -s, c);
+}
+
+float fill(float d) {
+    return 1. - smoothstep(0., AA / RENDERSIZE.x, d);
+}
+
+// inspired by Pixel Spirit Deck: https://patriciogonzalezvivo.github.io/PixelSpiritDeck/
+// + https://www.shadertoy.com/view/tsSXRz
+float stroke(float d, float width) {
+	return 1. - smoothstep(0., AA / RENDERSIZE.x, abs(d) - width * .5);
+}
+
+// from: pixelspiritdeck.com
+float flip(float value, float percent) {
+	return mix(value, 1. - value, percent);
+}
+
+float circle(vec2 p, float radius) {
+  return length(p) - radius;
 }
 
 // https://thebookofshaders.com/edit.php?log=160909064320
@@ -101,15 +120,6 @@ float easeInOutCubic(float t) {
     }
 }
 
-// https://thebookofshaders.com/edit.php?log=160909064528
-float ring(vec2 p, float radius, float width) {
-  	return abs(length(p) - radius * 0.5) - width;
-}
-
-float smoothedge(float v, float f) {
-    return smoothstep(0., f / RENDERSIZE.x, v);
-}
-
 void main(void) {
     vec2 uv = (gl_FragCoord.xy - .5 * RENDERSIZE.xy) / RENDERSIZE.y;
 
@@ -120,13 +130,10 @@ void main(void) {
     // ring size animation
     float offs = .5;
 	  t = easeInOutExpo(fract(g_time + offs));
-    float anim_sz = .25 + .25 * sin(pi * .75 + pi * (floor(g_time + offs) + t));
+    float anim_sz = .125 + .125 * sin(pi * .75 + pi * (floor(g_time + offs) + t));
 
-    float ring = ring(uv, ring_base_sz + anim_sz, ring_base_width);
-    float eps = abs(ring); // sharpen around the ring
-
-    float sdf = (2. * smoothstep(-eps, eps, uv.x) - 1.) * ring;
-    float mask = smoothedge(sdf, 4.); // cut sdf + AA
+    float mask = flip(stroke(circle(uv, ring_base_sz + anim_sz), ring_base_width),
+                      fill(uv.x));
 
     //vec3 col = mix(col1, col2, mask);
     vec3 col = vec3(mask); // black & white mask for VJ tool
