@@ -64,13 +64,13 @@ mat2 r2d(float a) {
 }
 
 float fill(float d) {
-    return smoothstep(AA / RENDERSIZE.x, 0., d);
+    return 1. - smoothstep(0., AA / RENDERSIZE.x, d);
 }
 
 // inspired by Pixel Spirit Deck: https://patriciogonzalezvivo.github.io/PixelSpiritDeck/
 // + https://www.shadertoy.com/view/tsSXRz
 float stroke(float d, float width) {
-	return smoothstep(AA / RENDERSIZE.x, 0., abs(d) - width * .5);
+	return 1. - smoothstep(0., AA / RENDERSIZE.x, abs(d) - width * .5);
 }
 
 float circle(vec2 p, float radius) {
