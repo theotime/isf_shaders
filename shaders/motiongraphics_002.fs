@@ -32,6 +32,12 @@
       "MIN": 0.
     },
     {
+      "NAME": "resync",
+      "LABEL": "Resync",
+      "TYPE": "float",
+      "DEFAULT": 0.
+    },
+    {
       "NAME": "blink_factor",
       "LABEL": "Blink Factor",
       "TYPE": "float",
@@ -46,7 +52,7 @@
 const float pi = 3.141592654;
 const float AA = 3.;
 
-#define g_time (speed*(bpm/60.)*TIME)
+#define g_time (speed*(bpm/60.)*(resync+TIME))
 
 // https://lospec.com/palette-list/1bit-monitor-glow
 //vec3 col1 = vec3(.133, .137, .137);
@@ -149,5 +155,5 @@ void main() {
     //vec3 col = mix(col1, col2, mask);
     vec3 col = vec3(mask); // black & white mask for VJ tool
 
-    gl_FragColor = vec4(col, 1.);
+    gl_FragColor = vec4(col, mask);
 }

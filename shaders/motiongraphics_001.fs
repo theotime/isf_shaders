@@ -37,7 +37,8 @@
       "LABEL": "Ring width",
       "TYPE": "float",
       "DEFAULT": 0.05,
-      "MIN": 0.
+      "MIN": -0.01,
+      "MAX": 1.1
     },
     {
       "NAME": "speed",
@@ -45,6 +46,12 @@
       "TYPE": "float",
       "DEFAULT": 0.5,
       "MIN": 0.
+    },
+    {
+      "NAME": "resync",
+      "LABEL": "Resync",
+      "TYPE": "float",
+      "DEFAULT": 0.
     }
 	]
 }*/
@@ -57,7 +64,7 @@
 
 const float pi = 3.141592654;
 
-#define g_time (speed*(bpm/60.)*TIME)
+#define g_time (speed*(bpm/60.)*(resync+TIME))
 
 mat2 r2d(float a) {
     float c = cos(a), s = sin(a);
@@ -123,5 +130,5 @@ void main(void) {
 
     //vec3 col = mix(col1, col2, mask);
     vec3 col = vec3(mask); // black & white mask for VJ tool
-    gl_FragColor = vec4(col, 1.);
+    gl_FragColor = vec4(col, mask);
 }
