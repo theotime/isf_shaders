@@ -37,7 +37,7 @@
 	  "TYPE": "float",
 	  "DEFAULT": 0.1,
 	  "MIN": 0.,
-    "MAX": 0.5
+	  "MAX": 0.5
 	},
 	{
 	  "NAME": "cross_width",
@@ -45,7 +45,7 @@
 	  "TYPE": "float",
 	  "DEFAULT": 0.4,
 	  "MIN": 0.,
-    "MAX": 0.5
+	  "MAX": 0.5
 	},
 	{
 		"NAME": "circle_radius",
@@ -53,7 +53,7 @@
 		"TYPE": "float",
 		"DEFAULT": 0.25,
 		"MIN": 0.,
-    "MAX": 1.
+		"MAX": 1.
 	},
 	{
 		"NAME": "circle_stroke",
@@ -61,7 +61,7 @@
 		"TYPE": "float",
 		"DEFAULT": 0.2,
 		"MIN": 0.,
-    "MAX": 1.
+		"MAX": 1.
 	},
 	{
 	  "NAME": "resync",
