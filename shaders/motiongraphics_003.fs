@@ -4,7 +4,11 @@
 // www.moduloprime.com
 // Motion Graphics #003
 
-// Checkout this on shadertoy:
+// Checkout this on shadertoy: https://www.shadertoy.com/view/3lyXzz
+
+// With the help of: https://thebookofshaders.com/examples/?chapter=motionToolKit
+// With the help of: https://patriciogonzalezvivo.github.io/PixelSpiritDeck/
+
 
 /*{
 	"DESCRIPTION": "Motion Graphics #003",
