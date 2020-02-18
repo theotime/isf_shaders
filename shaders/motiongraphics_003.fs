@@ -28,6 +28,38 @@
 	  "MIN": 0.
 	},
 	{
+	  "NAME": "cross_height",
+	  "LABEL": "Cross height",
+	  "TYPE": "float",
+	  "DEFAULT": 0.1,
+	  "MIN": 0.,
+    "MAX": 0.5
+	},
+	{
+	  "NAME": "cross_width",
+	  "LABEL": "Cross width",
+	  "TYPE": "float",
+	  "DEFAULT": 0.4,
+	  "MIN": 0.,
+    "MAX": 0.5
+	},
+	{
+		"NAME": "circle_radius",
+		"LABEL": "Circle radius",
+		"TYPE": "float",
+		"DEFAULT": 0.25,
+		"MIN": 0.,
+    "MAX": 1.
+	},
+	{
+		"NAME": "circle_stroke",
+		"LABEL": "Circle stroke",
+		"TYPE": "float",
+		"DEFAULT": 0.2,
+		"MIN": 0.,
+    "MAX": 1.
+	},
+	{
 	  "NAME": "resync",
 	  "LABEL": "Resync",
 	  "TYPE": "float",
@@ -96,9 +128,12 @@ void main() {
 	vec2 uv1 = fract((uv + t1) * 4.) - .5;
 	vec2 uv2 = fract(((uv - vec2(t1, 0)) * 4.) + .5) - .5;
 
-	float mask = fill(rect(uv1*r2d(t2 * pi), vec2(.1, .4)));
-	mask += fill(rect(uv1*r2d(t2 * pi), vec2(.4, .1)));
-	mask = bridge(mask, circle(uv2, .25), .2);
+	// layer1 - cross
+	float mask = fill(rect(uv1 * r2d(t2 * pi), vec2(cross_height, cross_width)));
+	mask += fill(rect(uv1 * r2d(t2 * pi), vec2(cross_width, cross_height)));
+
+	// layer2 - circle
+	mask = bridge(mask, circle(uv2, circle_radius), circle_stroke);
 
 	mask = clamp(mask, 0., 1.);
 	//vec3 col = mix(col1, col2, mask);
