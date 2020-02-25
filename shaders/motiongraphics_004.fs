@@ -4,13 +4,13 @@
 // www.moduloprime.com
 // Motion Graphics #004
 
-// Checkout this on shadertoy:
+// Checkout this on shadertoy: https://www.shadertoy.com/view/WtGXWW
 
 // With the help of: https://thebookofshaders.com/examples/?chapter=motionToolKit
 
 
 /*{
-    "DESCRIPTION": "Motion Graphics #003",
+    "DESCRIPTION": "Motion Graphics #004",
     "CREDIT": "www.moduloprime.com",
     "CATEGORIES": [
         "Generator"
