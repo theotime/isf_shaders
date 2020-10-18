@@ -21,14 +21,14 @@
         "LABEL": "BPM",
         "TYPE": "float",
         "DEFAULT": 120,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "speed",
         "LABEL": "Speed",
         "TYPE": "float",
         "DEFAULT": 0.5,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "samples_dx",
@@ -43,22 +43,22 @@
         "LABEL": "Position X",
         "TYPE": "float",
         "DEFAULT": 0.4,
-        "MIN": 0.,
+        "MIN": 0,
         "MAX": 0.5
     },
     {
         "NAME": "position_y",
         "LABEL": "Position y",
         "TYPE": "float",
-        "DEFAULT": 1.,
-        "MIN": 0.,
+        "DEFAULT": 1,
+        "MIN": 0,
         "MAX": 5
     },
     {
         "NAME": "resync",
         "LABEL": "Resync",
         "TYPE": "float",
-        "DEFAULT": 0.
+        "DEFAULT": 0
     }
     ]
 }*/
@@ -95,7 +95,7 @@ float easeInOutQuad(float t) {
 }
 
 void main() {
-    vec2 uv = (gl_FragCoord - .5 * RENDERSIZE.xy) / RENDERSIZE.y;
+    vec2 uv = (gl_FragCoord.xy - .5 * RENDERSIZE.xy) / RENDERSIZE.y;
 
     float t = fract(g_time * .25);
     float t_pi = t * 2. * pi;

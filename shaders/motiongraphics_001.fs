@@ -22,14 +22,14 @@
         "LABEL": "BPM",
         "TYPE": "float",
         "DEFAULT": 120,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "ring_base_sz",
         "LABEL": "Ring size",
         "TYPE": "float",
         "DEFAULT": 0.0125,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "ring_base_width",
@@ -44,13 +44,13 @@
         "LABEL": "Speed",
         "TYPE": "float",
         "DEFAULT": 0.5,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "resync",
         "LABEL": "Resync",
         "TYPE": "float",
-        "DEFAULT": 0.
+        "DEFAULT": 0
     }
     ]
 }*/

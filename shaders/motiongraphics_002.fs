@@ -22,27 +22,27 @@
         "LABEL": "BPM",
         "TYPE": "float",
         "DEFAULT": 120,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "speed",
         "LABEL": "Speed",
         "TYPE": "float",
         "DEFAULT": 0.5,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "resync",
         "LABEL": "Resync",
         "TYPE": "float",
-        "DEFAULT": 0.
+        "DEFAULT": 0
     },
     {
         "NAME": "blink_factor",
         "LABEL": "Blink Factor",
         "TYPE": "float",
-        "DEFAULT": 0.,
-        "MIN": 0.,
+        "DEFAULT": 0,
+        "MIN": 0,
         "MAX": 0.25
     }
     ]
@@ -94,7 +94,7 @@ float easeInOutExpo(float t) {
 }
 
 void main() {
-    vec2 uv = (gl_FragCoord - .5 * RENDERSIZE.xy) / RENDERSIZE.y;
+    vec2 uv = (gl_FragCoord.xy - .5 * RENDERSIZE.xy) / RENDERSIZE.y;
 
     float mask;
 

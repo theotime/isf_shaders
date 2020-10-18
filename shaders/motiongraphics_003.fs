@@ -22,21 +22,21 @@
         "LABEL": "BPM",
         "TYPE": "float",
         "DEFAULT": 120,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "speed",
         "LABEL": "Speed",
         "TYPE": "float",
         "DEFAULT": 0.25,
-        "MIN": 0.
+        "MIN": 0
     },
     {
         "NAME": "cross_height",
         "LABEL": "Cross height",
         "TYPE": "float",
         "DEFAULT": 0.1,
-        "MIN": 0.,
+        "MIN": 0,
         "MAX": 0.5
     },
     {
@@ -44,7 +44,7 @@
         "LABEL": "Cross width",
         "TYPE": "float",
         "DEFAULT": 0.4,
-        "MIN": 0.,
+        "MIN": 0,
         "MAX": 0.5
     },
     {
@@ -52,22 +52,22 @@
         "LABEL": "Circle radius",
         "TYPE": "float",
         "DEFAULT": 0.25,
-        "MIN": 0.,
-        "MAX": 1.
+        "MIN": 0,
+        "MAX": 1
     },
     {
         "NAME": "circle_stroke",
         "LABEL": "Circle stroke",
         "TYPE": "float",
         "DEFAULT": 0.2,
-        "MIN": 0.,
-        "MAX": 1.
+        "MIN": 0,
+        "MAX": 1
     },
     {
         "NAME": "resync",
         "LABEL": "Resync",
         "TYPE": "float",
-        "DEFAULT": 0.
+        "DEFAULT": 0
     }
     ]
 }*/
@@ -121,7 +121,7 @@ float easeInOutQuad(float t) {
 }
 
 void main() {
-    vec2 uv = gl_FragCoord / RENDERSIZE.xy;
+    vec2 uv = gl_FragCoord.xy / RENDERSIZE.xy;
     uv.x *= RENDERSIZE.x / RENDERSIZE.y;
 
     float t1 = fract(g_time * .25);// sliding
